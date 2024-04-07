@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables en JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #bcbdd0;
+            background-color: #161923;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            overflow-y: auto;
+            background-color: #282d3f;
+            border-right: 6px solid #c8c9db;
+            padding: 1em;
+        }
+
+        .wrapper {
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            max-width: 800px;
+            margin: 2em auto;
+        }
+
+        .content h1,
+        .content h2 {
+            margin: 0.5em 0;
+
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li a,
+        li a:visited,
+        li a:active {
+            text-decoration: none;
+            display: block;
+            color: #bcbdd0;
+            padding: 0.5em 0;
+        }
+
+        li a:hover {
+            text-decoration: underline;
+        }
+
+        .article-section {
+            margin-bottom: 2em;
+        }
+
+        .article-section h2 {
+            margin-top: 0;
+        }
+
+        pre {
+            background: #333;
+            color: #f8f8f2;
+            border-radius: 5px;
+            padding: 1em;
+            overflow: auto;
+            width: min-content;
+        }
+
+        code {
+            font-family: 'Consolas', 'Monaco', 'Courier New', Courier, monospace;
+            font-size: 0.95em;
+        }
+
+        :not(pre)>code {
+            padding: 2px 4px;
+            border-radius: 3px;
+            background-color: #333;
+            color: #f8f8f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Contenidos</h2>
+            <ul>
+                <li><a href="#introduccion">Introducción</a></li>
+                <li><a href="#tipos-de-datos">Tipos de Datos</a></li>
+                <li><a href="#objetos">Objetos</a></li>
+                <li><a href="#bucles">Bucles</a></li>
+                <li><a href="#asignacion">Asignación</a></li>
+                <li><a href="#variables">Variables</a></li>
+                <li><a href="#usos">Usos</a></li>
+                <li><a href="#conclusion">Conclusión</a></li>
+            </ul>
+        </div>
+        <div class="wrapper">
+            <div class="content">
+                <section id="introduccion">
+                    <h2>Introducción</h2>
+                    <p>JavaScript o JS, es un lenguaje de programación interpretado, este lenguaje es el principal motor
+                        detrás de la funcionalidad dentro de páginas web, esto se logra al juntarlo con los lenguajes de
+                        formato HTML y CSS. La capacidad de JavaScript de generar páginas web interactivas ha sido una
+                        de
+                        las partes fundamentales de la era moderna de la web. Alguna versión JavaScript se encuentra
+                        como
+                        motor dentro de todos los buscadores populares.
+                    </p>
+                    <p>
+                        JavaScript es un lenguaje multiparadigma, admite estilos de programación imperativo, funcional y
+                        controlado por eventos.Cuenta con APIs para trabajar con textos, listas, días, expresiones
+                        regulares, y el Document Object Model (DOM). No cuenta con funciones para networking,
+                        almacenamiento, gráficos.
+                    </p>
+                </section>
+
+                <section id="tipos-de-datos">
+                    <h2>Tipos de Datos</h2>
+                    <ul>
+                        <li><strong>Number</strong>: Representa números, ya sean enteros o de punto flotante. Ejemplo:
+                            <code>let age = 25;</code>
+                        </li>
+                        <li><strong>String</strong>: esenta secuencias de caracteres, usadas para texto. Ejemplo:
+                            <code>let name = "Alice";</code>
+                        </li>
+                        <li><strong>Boolean</strong>: Representa un valor lógico verdadero o falso. Ejemplo:
+                            <code>let isActive = true;</code>
+                        </li>
+                        <li><strong>Undefined</strong>: Indica que una variable ha sido declarada pero aún no se le ha
+                            asignado un valor. Ejemplo: <code>let result;</code></li>
+                        <li><strong>Null</strong>: Representa la ausencia intencional de un valor de objeto. Ejemplo:
+                            <code>let response = null;</code>
+                        </li>
+                        <li><strong>Symbol</strong>: Introducido en ES6, representa un valor único que no es igual a
+                            ningún
+                            otro valor. Útil para propiedades de objeto únicas. Ejemplo:
+                            <code>let sym = Symbol();</code>
+                        </li>
+                        <li><strong>BigInt</strong>: bién introducido recientemente, para representar enteros muy
+                            grandes.
+                            Ejemplo:
+                            <code>let bigInt = 1234567890123456789012345678901234567890n;</code>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="objetos">
+                    <h2>Objetos</h2>
+                    <p>Los objetos en JavaScript son colecciones de propiedades. Cada propiedad es un par de
+                        clave-valor.
+                        Los objetos pueden incluir funciones (llamadas métodos), arrays, incluso otros objetos.</p>
+                    <pre><code>let person = { name: "Alice", age: 25 };</code></pre>
+                </section>
+
+                <section id="bucles">
+                    <h2>Bucles</h2>
+                    Los bucles son estructuras de control que repiten un bloque de código mientras se cumple una
+                    condición
+                    especificada.
+                    <ul>
+                        <li>
+                            <strong>for</strong>: Se usa para iterar sobre una secuencia, como un rango de números, un
+                            array, etc.
+                            <pre><code>for (let i = 0; i < 5; i++) {
+            console.log(i);
+        }</code></pre>
+                        </li>
+                        <li>
+                            <strong>while</strong>: Ejecuta un bloque de código mientras una condición especificada es
+                            verdadera.
+                            <pre><code>let i = 0;
+        while (i < 5) {
+            console.log(i);
+            i++;
+        }</code></pre>
+                        </li>
+                        <li>
+                            <strong>do-while</strong>: Similar al while, pero garantiza que el bloque de código se
+                            ejecute
+                            al menos una vez.
+                            <pre><code>let i = 0;
+        do {
+            console.log(i);
+            i++;
+        } while (i < 5);</code></pre>
+                        </li>
+                        <li>
+                            <strong>for-in</strong>: Se utiliza para iterar sobre todas las propiedades enumerables de
+                            un
+                            objeto.
+                            <pre><code>let obj = {a: 1, b: 2, c: 3};
+        for (let prop in obj) {
+            console.log(prop + " = " + obj[prop]);
+        }</code></pre>
+                        </li>
+                        <li>
+                            <strong>for-of</strong>: Itera sobre los valores de un objeto iterable, como un array o
+                            string.
+                            <pre><code>let arr = [10, 20, 30];
+        for (let value of arr) {
+            console.log(value);
+        }</code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="asignacion">
+                    <h2>Asignación</h2>
+                    La asignación en JavaScript es el proceso de asignar valores a variables usando el operador =.
+                    <ul>
+                        <li>
+                            <strong>Asignación Básica</strong>: Asigna valores con el operador <code>=</code>.
+                            <pre><code>let x = 5;</code></pre>
+                        </li>
+                        <li>
+                            <strong>Asignación Compuesta</strong>: Combina asignación con operaciones.
+                            <pre><code>x += 10; // Equivalente a x = x + 10;
+        x *= 3; // Equivalente a x = x * 3;</code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="variables">
+                    <h2>Variables</h2>
+                    <p>JavaScript se escribe dinámicamente. Esto significa que la misma variable puede contener valores
+                        de
+                        diferentes tipos.</p>
+                    <ul>
+                        <li>
+                            <strong>var</strong>: La forma original de declarar una variable, antes de ES6 cuando ‘let’
+                            y
+                            ‘const’ son introducidas, cuenta con un alcance de función, significando que sólo es
+                            accesible
+                            dentro de la función donde fue declarada, si fue declarada fuera de una función esta es
+                            global.
+                            la variable se puede utilizar antes de declararla debido a que es elevada, aunque el valor
+                            será
+                            undefined hasta el momento en que se declare la variable. Las variables pueden ser
+                            declaradas
+                            varias veces.
+                            <pre><code>console.log(x); // undefined
+        var x = 5;</code></pre>
+                        </li>
+                        <li>
+                            <strong>let</strong>: Cuenta con alcance de bloque, esto apoya en el comportamiento de las
+                            variables dentro de bucles y condicionales. La variable declarada es elevada pero no
+                            inicializada, significando que retornara un ‘Reference Error’ si es llamada antes de ser
+                            declarada, declarar la misma variable dentro del mismo bloque no es permitido.
+                            <pre><code>let x;</code></pre>
+                        </li>
+                        <li>
+                            <strong>const</strong>: Cuento con alcance de bloque, la declaración de una variable con
+                            ‘const’
+                            genera una referencia inmutable a una variable, significando que objetos si se pueden
+                            modificar.
+                            Requiere ser inicializada al ser declara y esta es elevada.
+                            <pre><code>const z = 10;
+        // z = 20; // Error
+        const obj = { a: 1 };
+        obj.a = 2; // Esto es posible</code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="usos">
+                    <h2>Usos</h2>
+                    <h3>Functions</h3>
+                    <p>Las variables en funciones pueden ser locales (definidas dentro de la función) o globales
+                        (definidas
+                        fuera de cualquier función). Las variables locales sólo están accesibles dentro de la función
+                        donde
+                        se declaran.
+                    </p>
+                    <pre><code>let a = "Global";
+        function ejemploFuncion() {
+            let b = "Local";
+            return a + " y " + b;
+        }
+        console.log(ejemploFuncion()); // "Global y Local"
+        // console.log(b); // Error: b no está definida fuera de la función</code></pre>
+
+                    <h3>Bucles</h3>
+                    <p>Las variables son utilizadas para controlar la ejecución de bucles</p>
+                    <pre><code>for (let i = 0; i < 5; i++) {
+            console.log(i);
+        }</code></pre>
+
+                    <h3>Objetos</h3>
+                    <p>En los objetos, las variables se utilizan para almacenar propiedades. Cada propiedad del objeto
+                        tiene
+                        un nombre (key) y un valor, que puede ser una variable.
+                    </p>
+                    <pre><code>const persona = {
+            nombre: "Gabriel",
+            edad: 25
+        };
+        console.log(persona.nombre); // "Gabriel"
+        persona.nombre = "Alberto";
+        console.log(persona.nombre); // "Alberto"</code></pre>
+                </section>
+
+                <section id="conclusion">
+                    <h2>Conclusión</h2>
+                    <p>JavaScript es un lenguaje de programación flexible que maneja una amplia gama de tipos de datos,
+                        desde los más básicos como números, cadenas de texto y booleanos hasta los más complejos como
+                        objetos. En cuanto a los bucles, ofrece estructuras como for, while, do-while, for-in y for-of
+                        para
+                        iterar y controlar de manera efectiva el flujo de ejecución del código. Finalmente, la
+                        asignación de
+                        valores a variables es un componente crucial, y hay operadores que permiten no solo la
+                        asignación
+                        directa, sino también la combinación de la asignación con operaciones aritméticas y lógicas para
+                        una
+                        codificación más sencilla.
+                    </p>
+                </section>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
